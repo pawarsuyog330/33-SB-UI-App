@@ -14,7 +14,7 @@ public class Customer {
 	private Long phoneNumber;
 	
 	@NotEmpty
-	private String username;
+	private String userName;
 	
 	@NotEmpty
 	private String password;

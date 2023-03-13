@@ -9,7 +9,7 @@
   <table>
     <tr>
          <td> PhoneNumber </td>
-         <td> <input type="text"    name="phoneNo">
+         <td> <input type="text"    name="phoneNumber">
     </tr>
     <tr>
          <td> Password </td>

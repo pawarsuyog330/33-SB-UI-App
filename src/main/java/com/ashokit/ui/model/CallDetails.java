@@ -7,13 +7,13 @@ import lombok.Data;
 @Data
 public class CallDetails {
 	
-	private Integer id;
+	private Integer callId;
 	
 	private Long fromNumber;
 	
 	private Long toNumber;
 	
-	private Integer duration;
+	private Integer callDuration;
 	
 	private LocalDateTime calledOn;
 

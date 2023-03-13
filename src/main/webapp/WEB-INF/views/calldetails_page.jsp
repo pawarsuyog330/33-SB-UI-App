@@ -3,18 +3,18 @@
 <c:if test = "${!empty callsList}">
    <table style="margin-left: auto; margin-right: auto;" background-color="yellow" border="1">
       <tr>
-        <th> ID </th>
+        <th> CALL ID </th>
         <th> FROM NUMBER </th>
         <th> TO NUMBER </th>
-        <th> DURATION </th>
+        <th> CALL DURATION </th>
         <th> CALLED ON </th>
       </tr>
       <c:forEach items = "${callsList}"  var = "calldetails">
          <tr>
-            <td> <c:out value="${calldetails.id}"/> </td>
+            <td> <c:out value="${calldetails.callId}"/> </td>
             <td> <c:out value="${calldetails.fromNumber}"/> </td>
             <td> <c:out value="${calldetails.toNumber}"/> </td>
-            <td> <c:out value="${calldetails.duration}"/> </td>
+            <td> <c:out value="${calldetails.callDuration}"/> </td>
             <td> <c:out value="${calldetails.calledOn}"/> </td>
          </tr>  
       </c:forEach>

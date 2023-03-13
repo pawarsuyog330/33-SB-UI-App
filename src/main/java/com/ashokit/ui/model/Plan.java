@@ -5,7 +5,7 @@ import lombok.Data;
 @Data
 public class Plan {
 	private String planId;
-	private String description;
-	private String validity;
+	private String planDescription;
+	private String planValidity;
 
 }

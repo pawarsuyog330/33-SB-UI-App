@@ -89,19 +89,19 @@ public class CustomerController {
 	}
 	
 	@PostMapping( value = "/login_customer")
-	public   String   loginCustomer(@RequestParam Long phoneNo, @RequestParam String password, Model model, HttpServletRequest request)
+	public   String   loginCustomer(@RequestParam Long phoneNumber, @RequestParam String password, Model model, HttpServletRequest request)
 	{
 		Login  login=new  Login();
-		login.setPhoneNumber(phoneNo);
+		login.setPhoneNumber(phoneNumber);
 		login.setPassword(password);
 		
 		boolean  flag=restTemplate.postForObject(AppConstants.CUSTOMER_LOGIN_URL, login, Boolean.class);
 		
 		if(flag==true) {
 			HttpSession  session=request.getSession();
-			session.setAttribute("phoneNumber", phoneNo);
-			String username = restTemplate.getForObject(AppConstants.CUSTOMER_NAME_URL, String.class, phoneNo);
-			session.setAttribute("username", username);
+			session.setAttribute("phoneNumber", phoneNumber);
+			String userName = restTemplate.getForObject(AppConstants.CUSTOMER_NAME_URL, String.class, phoneNumber);
+			session.setAttribute("username", userName);
 			return "Dashboard1";
 		}
 		else {
@@ -114,8 +114,8 @@ public class CustomerController {
 	@GetMapping("/profile")
 	public  String  customerProfile(Model model, HttpServletRequest request) {
 		HttpSession  session=request.getSession();
-		Long phoneNo = (Long) session.getAttribute("phoneNumber");
-		CustomerProfile custProfile = restTemplate.getForObject(AppConstants.CUSTOMER_PROFILE_URL, CustomerProfile.class, phoneNo);
+		Long phoneNumber = (Long) session.getAttribute("phoneNumber");
+		CustomerProfile custProfile = restTemplate.getForObject(AppConstants.CUSTOMER_PROFILE_URL, CustomerProfile.class, phoneNumber);
 		model.addAttribute("customer_profile", custProfile);
 		return  "customerProfile";
 	}
@@ -135,10 +135,10 @@ public class CustomerController {
 	@GetMapping("/addContact")
 	public  String  addFriendContact(Model model, HttpServletRequest request,@RequestParam Long friendNumber) {
 		HttpSession  session=request.getSession();
-		Long phoneNo = (Long) session.getAttribute("phoneNumber");
+		Long phoneNumber = (Long) session.getAttribute("phoneNumber");
 		
 		Friend  friend=new Friend();
-		friend.setPhoneNumber(phoneNo);
+		friend.setPhoneNumber(phoneNumber);
 		friend.setFriendNumber(friendNumber);
 		
 		String message = restTemplate.postForObject(AppConstants.ADD_FRIEND_CONTACT_URL, friend, String.class);
